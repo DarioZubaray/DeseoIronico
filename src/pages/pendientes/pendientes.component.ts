@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DeseoServices } from '../../services/deseos.service';
 
 @Component({
   selector: 'page-pendientes',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
 })
 export class PendientesPage {
 
-  constructor() {}
+  constructor( public deseosServices: DeseoServices) {
+    
+  }
 }
