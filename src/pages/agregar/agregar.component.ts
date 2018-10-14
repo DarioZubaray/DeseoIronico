@@ -17,6 +17,8 @@ export class AgregarPage {
     const titulo = this.navParams.get('titulo');
     console.log( titulo );
     this.lista = new Lista( titulo );
+
+    this.deseosServices.agregarLista( this.lista );
   }
 
   agregarItem() {
@@ -36,6 +38,6 @@ export class AgregarPage {
   }
 
   borrarItem( i: number ) {
-    this.lista.items.splice( i, 1 );  
+    this.lista.items.splice( i, 1 );
   }
 }
