@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Lista } from '../models/lista.model';
 import { DeseoServices } from '../services/deseos.service';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController, ItemSliding } from 'ionic-angular';
 import { AgregarPage } from '../pages/agregar/agregar.component';
 
 @Component({
@@ -9,10 +9,11 @@ import { AgregarPage } from '../pages/agregar/agregar.component';
   templateUrl: 'listas.component.html'
 })
 export class ListasComponent {
-  
+
   @Input() completado: boolean = false;
 
-  constructor( public deseosServices: DeseoServices, private navCtrl: NavController) {
+  constructor( public deseosServices: DeseoServices, private navCtrl: NavController,
+               private alertCtrl: AlertController) {
 
   }
 
@@ -21,7 +22,42 @@ export class ListasComponent {
   }
 
 
-    borrarLista(lista: Lista) {
-      this.deseosServices.borrarLista( lista );
-    }
+  borrarLista(lista: Lista) {
+    this.deseosServices.borrarLista( lista );
+  }
+
+  editarLista( lista: Lista, slidingItem: ItemSliding ) {
+    slidingItem.close();
+
+    const alerta = this.alertCtrl.create({
+      title: 'Editar nombre',
+      message: 'Nuevo nombre de la lista',
+      inputs: [{
+        name: 'titulo',
+        placeholder: 'Nombre de lista',
+        value: lista.titulo
+      }],
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Guardar',
+          handler: data => {
+            if( data.titulo.length === 0 ){
+              return;
+            }
+
+            lista.titulo = data.titulo;
+            this.deseosServices.guardarStorage();
+          }
+        }
+      ]
+    });
+
+    alerta.present();
+  }
 }
