@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DeseoServices } from '../../services/deseos.service';
 
 @Component({
   selector: 'page-terminados',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class TerminadosPage {
 
-  constructor() {}
+  constructor(public deseosServices: DeseoServices) {}
 }

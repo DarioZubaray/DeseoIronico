@@ -9,14 +9,6 @@ export class DeseoServices{
   constructor() {
     this.cargarStorage();
     console.log("DeseoService inicializado");
-    /*
-    const lista1 = new Lista('Recolectar Piedras del Infinito');
-    const lista2 = new Lista('Hereos a vencer');
-
-    this.listas.push(lista1, lista2);
-
-    console.log(this.listas);
-    */
   }
 
   agregarLista( lista: Lista) {

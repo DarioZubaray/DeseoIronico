@@ -16,14 +16,10 @@ export class PendientesPage {
   }
 
   listaSeleccionada(lista: Lista){
-    console.log(lista);
-
     this.navCtrl.push( AgregarPage, { titulo: lista.titulo, lista: lista }  );
   }
 
   irAgregar() {
-    //this.navCtrl.push( AgregarPage )
-
     const alerta = this.alertCtrl.create({
       title: 'Nueva lista',
       message: 'Nombre de la nueva lista que desea',
