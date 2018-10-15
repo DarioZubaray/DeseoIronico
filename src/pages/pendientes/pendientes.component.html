@@ -1,22 +1,14 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Pendientes
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
 <ion-content>
 
-  <img src="../../assets/imgs/pendientes.jpg">
-
-  <ion-list>
-    <ion-item-sliding *ngFor="let lista of deseosServices.listas | filtroCompletado:false" (click)="listaSeleccionada(lista)">
-      <button ion-item>
-        {{ lista.titulo }}
-        <ion-note item-end>
-          {{ lista.items.length }} items
-        </ion-note>
-      </button>
-      <ion-item-options side="left">
-       <button (click)="borrarLista(lista)" ion-button icon-only color="danger">
-         <ion-icon name="close"></ion-icon>
-       </button>
-     </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+  <app-listas></app-listas>
 
   <ion-fab bottom right>
       <button (click)="irAgregar()" ion-fab mini>
