@@ -17,4 +17,8 @@ export class TerminadosPage {
   listaSeleccionada(lista: Lista){
     this.navCtrl.push( AgregarPage, { titulo: lista.titulo, lista: lista }  );
   }
+
+  borrarLista(lista: Lista) {
+    this.deseosServices.borrarLista( lista );
+  }
 }
